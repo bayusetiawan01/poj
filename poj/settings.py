@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,8 +78,13 @@ WSGI_APPLICATION = 'poj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'doojdr903kguc',
+        'HOST': 'ec2-52-21-252-142.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'jmfckqxjunhxsl',
+        'PASSWORD': 'd30e3a7a78b2bdf904210ffb9f8c1cce8affaf0885fd42dce0e1cc088f292153',
+        'CONN_MAX_AGE': 500,
     }
 }
 
@@ -131,3 +137,5 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
+
+django_heroku.settings(locals())
